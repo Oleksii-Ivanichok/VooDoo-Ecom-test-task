@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./js/disclosure-element.js" defer></script>
+    <title>Voodoo Test</title>
+</head>
+
+<body class="text-sm font-font-main">
+    <aside id="cartPanel"
+        class="z-10 fixed cart-section w-full max-w-[390px] sm:max-w-7xl sm:w-[445px] bg-light-black h-screen text-light-sand font-bold -right-[445px]">
+        <div class="container max-w-[360px] sm:max-w-[370px] mx-auto mt-12">
+            <div class="cart__header flex justify-between pb-5 mb-[53px] border-b border-light-sand">
+                <h2 class="text-2xl">Shoping Cart</h2>
+                <button id="close-cart">
+                    <img src="img/shopping-cart/close-btn.svg" alt="">
+                </button>
+            </div>
+
+            <div id="cart-container" class="cart__goods flex flex-col gap-10 pb-8 border-b border-light-sand">
+
+                <!-- <div class="cart__item flex items-start justify-between gap-10 ">
+                    <div class="item__info flex gap-[18px]">
+                        <img src="img/shopping-cart/img-template.svg" class="w-[74px] h-[74px]" alt="">
+                        <item__info-text class="flex gap-2 flex-col">
+                            <p>Product name</p>
+                            <p>1 000 KR.</p>
+                            <div class="item__text-settings flex items-center">
+                                <button class="w-5 h-5">-</button>
+                                <p class=" h-5">1</p>
+                                <button class="w-5 h-5">+</button>
+                            </div>
+                        </item__info-text>
+                    </div>
+                    <button>
+                        <img class="delete-item" src="img/shopping-cart/delete-item.svg" alt="">
+                    </button>
+                </div> -->
+
+            </div>
+            <div class="cart__total flex justify-between mt-9">
+                <p>TOTAL</p>
+                <p><span id="total-price">0</span> KR.</p>
+            </div>
+
+        </div>
+    </aside>
+
+    <header class="relative pt-6 xl:pt-12 pb-8 xl:pb-28 bg-light-sand border-b-[1px] border-black">
+        <div class="logo absolute left-[3.5%] flex items-start gap-1 xl:gap-3">
+            <img src="img/logo.svg" alt="" class="xl:w-11">
+            <img src="img/header/logo-name.svg" alt="" class="xl:w-48">
+        </div>
+        <div class="container mx-auto max-w-mobile-container sm:max-w-[87%] flex justify-end gap-4 xl:gap-12">
+            <button id="cartButton">
+                <img src="img/header/shopping-cart.svg" alt="">
+            </button>
+            <button
+                class="bg-black text-white w-20 xl:w-24 xl:text-xl font-main rounded font-bold h-8 xl:h-10">Sign-up</button>
+        </div>
+    </header>
+
+    <main class="bg-light-sand">
+
+        <div class="container mx-auto max-w-mobile-container sm:max-w-[87%]  pt-24 pb-48">
+
+            <template id="disclosure-element">
+                <details class="details">
+                    <link rel="stylesheet" href="dist/output.css">
+                    <summary
+                        class="main__alert p-6 xl:p-6 bg-black flex place-content-between text-white items-center rounded">
+                        <div class="main__alpha flex items-center">
+                            <img src="img/alert/exclamation-mark.svg" class="w-6" alt="">
+                            <p class="font-bold ml-1.5">ALPHA</p>
+                            <p class="alert__text px-6 xl:px-12">
+                                Important info regarding our service
+                            </p>
+                        </div>
+                        <img src="img/alert/arrow-down.svg" alt="" class="w-6 disclousure__dropdown">
+                    </summary>
+                    <div
+                        class="main__alert p-6 xl:p-6 bg-black flex place-content-between text-white items-center rounded">
+                        <slot name="disclosure-info">
+                            INFO
+                        </slot>
+                    </div>
+                </details>
+            </template>
+
+            <disclosure-element>
+                <div class="main__alert p-6 xl:p-6 bg-black flex place-content-between text-white items-center"
+                    slot="disclosure-info">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptas tempora labore voluptatem
+                    ducimus
+                    possimus odio vitae, excepturi nihil, eveniet id a inventore, sequi velit? Alias perspiciatis
+                    magnam rem quas!
+                </div>
+            </disclosure-element>
+
+            <div class="main__catalog grid sm:grid-cols-2 medium-s:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12 pt-12"
+                id="product-container">
+
+                <!-- <div class="catalog__card max-w-[342px] relative" uId="${product.id}">
+                    <div class="card__used w-12 h-6 bg-black rounded text-xs text-white flex items-center justify-center absolute top-3 left-3">
+                        USED</div>
+                    <img src="img/product-photo.png" alt="" class="w-full">
+                    <div class="card__description max-w-full py-3 flex justify-between">
+                        <div class="card__info max-w-[180px]">
+                            <h3 class="card__name font-bold truncate"> ddddddddddddddddddddddddddddddddddddddddddввввввввв</h3>
+                            <p class="card__price font-bold truncate">ddddddddddddddddddddddddddddd</p>
+                        </div>
+                        <div class="card__condition float-right">
+                            <p class="float-right font-medium">Condition</p>
+                            <p>Slightly used</p>
+                        </div>
+                    </div>
+                    <button class="add-to-cart bg-black text-white w-full text-sm font-main rounded font-bold h-10">ADD TO CART</button>
+                </div> -->
+
+            </div>
+
+            <div class="pagination flex justify-center gap-x-[10px] pt-[59px] pb-[204px] xl:pt-[70px] xl:pb-[196px]">
+                <a href="" class="pagination__page pagination__page-current">1</a>
+                <a href="" class="pagination__page ">2</a>
+                <a href="" class="pagination__page ">3</a>
+                <a href="" class="pagination__page ">4</a>
+                <a href="" class="pagination__page ">5</a>
+                <a href="" class="pagination__page ">...</a>
+                <a href="" class="pagination__page ">25</a>
+            </div>
+
+
+        </div>
+    </main>
+    <footer class="bg-white py-12 xl:py-20 font-font-secondary border-t-[1px] border-black">
+        <div
+            class="container mx-auto max-w-mobile-container sm:max-w-[87%] grid sm:grid-cols-2 medium-s:grid-cols-4 gap-y-12">
+            <div class="footer__column flex sm:justify-start justify-center footer__logo">
+                <img src="img/logo.svg" alt="" class="w-20">
+            </div>
+            <div class="footer__column">
+                <ul>
+                    <li>FAQ</li>
+                    <li>RETURNS</li>
+                    <li>CONTACT</li>
+                </ul>
+            </div>
+            <div class="footer__column">
+                <ul>
+                    <li>TERMS & CONDITIONS</li>
+                    <li>PRIVACY POLICY</li>
+                    <li>COOKIE POLICY</li>
+                    <li>COOKIE SETTINGS</li>
+                </ul>
+            </div>
+            <div class="footer__column">
+                <ul>
+                    <li>ABOUT SECOND CHANCE</li>
+                    <li>CAREER</li>
+                    <li>FACEBOOK</li>
+                    <li>INSTAGRAM</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/shopping-cart.js"></script>
+
+</body>
+
+</html>

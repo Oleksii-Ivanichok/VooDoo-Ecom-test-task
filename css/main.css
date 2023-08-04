@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.footer__logo {
+  grid-row: 4;
+}
+
+@media only screen and (min-width: 640px) {
+  .footer__logo {
+    grid-row: 1;
+  }
+}
+
+@layer components {
+  .pagination__page {
+    @apply rounded-[50%] w-[39px] border-[1px] h-[39px] text-black flex justify-center items-center font-font-action font-light border-black;
+  }
+}
+
+@layer components {
+  .pagination__page-current {
+    @apply bg-black text-white;
+  }
+}
+
+.details[open] summary {
+  margin-bottom: -10px;
+}
+
+.details[open] .disclousure__dropdown {
+  transform: rotate(180deg);
+}
+
+.cart-section {
+  transition: right 0.3s ease-in-out;
+}
+
+.cart-section.active {
+  right: 0;
+}
