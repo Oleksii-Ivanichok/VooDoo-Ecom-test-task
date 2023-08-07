@@ -12,7 +12,7 @@ closeCart.addEventListener('click', () => {
 
 const cartContainer = document.getElementById('cart-container');
 
-cartContainer.addEventListener('click', function(event) {
+cartContainer.addEventListener('click', (event)=> {
     if (event.target.classList.contains('item-increment')) {
         incrementItemAmount(event.target);
     } else if (event.target.classList.contains('delete-item')) {
@@ -23,26 +23,19 @@ cartContainer.addEventListener('click', function(event) {
     }
 });
 
-setTimeout(getButtons, 300);
 
-function getButtons() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productName = button.parentElement.querySelector('.card__name').textContent;
-            const productPrice = button.parentElement.querySelector('.card__price').textContent;
-            const imgElement = button.parentElement.querySelector('img').getAttribute('src');
-            const productUId = button.parentElement.getAttribute('uid')
+window.addEventListener('click', (event)=>{
+    if(event.target.hasAttribute('add-to-cart')){
+            const productName = event.target.parentElement.querySelector('.card__name').textContent;
+            const productPrice = event.target.parentElement.querySelector('.card__price').textContent;
+            const imgElement = event.target.parentElement.querySelector('img').getAttribute('src');
+            const productUId = event.target.parentElement.getAttribute('uid')
 
             const itemsHTML = addToCart(productName, productPrice, imgElement, productUId);
             cartContainer.insertAdjacentHTML("beforeend", itemsHTML)
             totalCalculate();
-
-        });
-    });
-
-}
+    }
+})
 
 function addToCart(productName, productPrice, imgElement, productUId) {
     const cartItems = document.querySelectorAll('.cart__item');
